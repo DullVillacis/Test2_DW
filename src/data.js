@@ -1,0 +1,84 @@
+
+export const autores = [
+  {
+    id: "1",
+    nombre: "Gabriel García Márquez",
+    nacionalidad: "Colombiana",
+    anioNacimiento: 1927,
+  },
+  {
+    id: "2",
+    nombre: "Isabel Allende",
+    nacionalidad: "Chilena",
+    anioNacimiento: 1942,
+  },
+  {
+    id: "3",
+    nombre: "Jorge Luis Borges",
+    nacionalidad: "Argentina",
+    anioNacimiento: 1899,
+  },
+  {
+    id: "4",
+    nombre: "Mario Vargas Llosa",
+    nacionalidad: "Peruana",
+    anioNacimiento: 1936,
+  },
+];
+
+export const libros = [
+  {
+    id: "101",
+    titulo: "Cien años de soledad",
+    genero: "Realismo mágico",
+    anio: 1967,
+    paginas: 471,
+    disponible: true,
+    autorId: "1",
+  },
+  {
+    id: "102",
+    titulo: "El amor en los tiempos del cólera",
+    genero: "Novela",
+    anio: 1985,
+    paginas: 348,
+    disponible: false,
+    autorId: "1",
+  },
+  {
+    id: "103",
+    titulo: "La casa de los espíritus",
+    genero: "Realismo mágico",
+    anio: 1982,
+    paginas: 433,
+    disponible: true,
+    autorId: "2",
+  },
+  {
+    id: "104",
+    titulo: "Ficciones",
+    genero: "Cuento",
+    anio: 1944,
+    paginas: 174,
+    disponible: true,
+    autorId: "3",
+  },
+  {
+    id: "105",
+    titulo: "El Aleph",
+    genero: "Cuento",
+    anio: 1949,
+    paginas: 146,
+    disponible: false,
+    autorId: "3",
+  },
+  {
+    id: "106",
+    titulo: "La ciudad y los perros",
+    genero: "Novela",
+    anio: 1963,
+    paginas: 409,
+    disponible: true,
+    autorId: "4",
+  },
+];
