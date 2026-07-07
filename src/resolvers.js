@@ -1,4 +1,3 @@
-
 import { autores, libros } from "./data.js";
 
 export const resolvers = {

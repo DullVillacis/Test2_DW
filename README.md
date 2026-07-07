@@ -1,47 +1,47 @@
-# API GraphQL — Caso de estudio: Biblioteca 📚
+# API GraphQL - Caso de estudio: Biblioteca
 
-API desarrollada con **Node.js** y **GraphQL (Apollo Server v4)**.
+API desarrollada con Node.js y GraphQL (Apollo Server v5).
 
 ## Entidades relacionadas
 
 ```
-Autor (1) ────< (N) Libro
+Autor (1) ----< (N) Libro
 ```
 
-- Un **Autor** puede tener muchos **Libros**.
-- Un **Libro** pertenece a un solo **Autor** (campo `autorId`).
+- Un Autor puede tener muchos Libros.
+- Un Libro pertenece a un solo Autor (campo autorId).
 
 ## Estructura del proyecto
 
 ```
 biblioteca-graphql-api/
-├── package.json
-└── src/
-    ├── index.js       → Punto de entrada / arranque del servidor Apollo
-    ├── schema.js      → Schema GraphQL (typeDefs)
-    ├── resolvers.js   → Resolvers (Query, Mutation y relaciones)
-    └── data.js        → Fuente de datos (arreglos en memoria)
+- package.json
+- src/
+  - index.js       Punto de entrada / arranque del servidor Apollo
+  - schema.js      Schema GraphQL (typeDefs)
+  - resolvers.js   Resolvers (Query, Mutation y relaciones)
+  - data.js        Fuente de datos (arreglos en memoria)
 ```
 
 ## Requisitos
 
 - Node.js 18 o superior.
 
-## Instalación y ejecución
+## Instalacion y ejecucion
 
 ```bash
 npm install
 npm start
 ```
 
-El servidor quedará disponible en: **http://localhost:4000/**
-Abre esa URL en el navegador para usar **Apollo Sandbox** y escribir consultas.
+El servidor quedara disponible en: http://localhost:4000/
+Abre esa URL en el navegador para usar Apollo Sandbox y escribir consultas.
 
 ---
 
 ## Ejemplos de consultas GraphQL
 
-### 1. Consultar todos los autores con sus libros (relación 1→N)
+### 1. Consultar todos los autores con sus libros (relacion 1 a N)
 
 ```graphql
 query {
@@ -58,7 +58,7 @@ query {
 }
 ```
 
-### 2. Mostrar únicamente determinados campos
+### 2. Mostrar unicamente determinados campos
 
 ```graphql
 query {
@@ -69,7 +69,7 @@ query {
 }
 ```
 
-### 3. Consultar un registro específico (por id)
+### 3. Consultar un registro especifico (por id)
 
 ```graphql
 query {
@@ -78,7 +78,7 @@ query {
     genero
     anio
     autor {
-      nombre        # relación N→1
+      nombre
       nacionalidad
     }
   }
@@ -105,7 +105,7 @@ query {
 }
 ```
 
-### 5. Búsqueda por texto en el título
+### 5. Busqueda por texto en el titulo
 
 ```graphql
 query {
@@ -122,7 +122,7 @@ query {
 
 ```graphql
 mutation {
-  agregarAutor(nombre: "Julio Cortázar", nacionalidad: "Argentina", anioNacimiento: 1914) {
+  agregarAutor(nombre: "Julio Cortazar", nacionalidad: "Argentina", anioNacimiento: 1914) {
     id
     nombre
   }
@@ -156,14 +156,14 @@ mutation {
 
 ---
 
-## Guía rápida para la presentación
+## Guia rapida para la presentacion
 
-El docente puede pedir modificaciones sobre las consultas. Aquí dónde tocar:
+El docente puede pedir modificaciones sobre las consultas. Aqui donde tocar:
 
-| Pedido del docente                       | Qué hacer                                                            |
+| Pedido del docente                       | Que hacer                                                            |
 | ---------------------------------------- | ------------------------------------------------------------------- |
-| Mostrar solo ciertos campos              | Quitar/agregar campos dentro de `{ ... }` en la consulta            |
-| Consultar un registro específico         | Usar `libro(id: "...")` o `autor(id: "...")`                         |
-| Filtrar por un valor                     | Usar argumentos en `libros(genero: ..., disponible: ...)`           |
-| Agregar un atributo nuevo a una entidad  | Editar `src/schema.js` (tipo) + `src/data.js` (dato) + resolver     |
-| Agregar una nueva consulta/filtro        | Editar `type Query` en `schema.js` y su resolver en `resolvers.js`  |
+| Mostrar solo ciertos campos              | Quitar/agregar campos dentro de { ... } en la consulta              |
+| Consultar un registro especifico         | Usar libro(id: "...") o autor(id: "...")                            |
+| Filtrar por un valor                     | Usar argumentos en libros(genero: ..., disponible: ...)             |
+| Agregar un atributo nuevo a una entidad  | Editar src/schema.js (tipo) + src/data.js (dato) + resolver         |
+| Agregar una nueva consulta/filtro        | Editar type Query en schema.js y su resolver en resolvers.js        |

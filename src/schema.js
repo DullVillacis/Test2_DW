@@ -1,18 +1,13 @@
-
-export const typeDefs = `#graphql
-  # ---------- ENTIDAD: Autor ----------
+export const typeDefs = `
   type Autor {
     id: ID!
     nombre: String!
     nacionalidad: String
     anioNacimiento: Int
-    # Relación 1 -> N : todos los libros escritos por este autor
     libros: [Libro!]!
-    # Campo derivado (calculado en el resolver)
     totalLibros: Int!
   }
 
-  # ---------- ENTIDAD: Libro ----------
   type Libro {
     id: ID!
     titulo: String!
@@ -20,17 +15,13 @@ export const typeDefs = `#graphql
     anio: Int
     paginas: Int
     disponible: Boolean!
-    # Relación N -> 1 : el autor al que pertenece el libro
     autor: Autor!
   }
 
-  # ---------- CONSULTAS (lectura) ----------
   type Query {
-    # Autores
     autores: [Autor!]!
     autor(id: ID!): Autor
 
-    # Libros con filtros opcionales (todos combinables)
     libros(
       genero: String
       disponible: Boolean
@@ -38,14 +29,11 @@ export const typeDefs = `#graphql
       anioHasta: Int
     ): [Libro!]!
 
-    # Un libro específico por su id
     libro(id: ID!): Libro
 
-    # Búsqueda de texto libre en el título
     buscarLibros(texto: String!): [Libro!]!
   }
 
-  # ---------- MUTACIONES (escritura) ----------
   type Mutation {
     agregarAutor(
       nombre: String!
@@ -64,7 +52,6 @@ export const typeDefs = `#graphql
 
     eliminarLibro(id: ID!): Boolean!
 
-    # Cambia la disponibilidad (prestar / devolver)
     cambiarDisponibilidad(id: ID!, disponible: Boolean!): Libro!
   }
 `;
